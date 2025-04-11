@@ -60,16 +60,19 @@ void UMastermindSphere::Clicked(UPrimitiveComponent* ClickedComp, FKey ButtonPre
 
 void UMastermindSphere::Unblock()
 {
+	IsBlocked = false;
 }
 
 void UMastermindSphere::Block()
 {
+	IsBlocked = true;
 }
 
 void UMastermindSphere::ChangeColor(FLinearColor NewColor)
 {
 	if (DynamicMat)
 	{
+		if (IsBlocked!=true)
 		DynamicMat->SetVectorParameterValue("Color", NewColor);
 	}
 	

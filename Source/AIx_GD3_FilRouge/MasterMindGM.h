@@ -25,6 +25,9 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	TArray<uint8> Solution;
+
+UPROPERTY(EditAnywhere)
+	int nombredetour=0;
 	
 protected:
 	// Called when the game starts or when spawned

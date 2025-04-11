@@ -31,6 +31,9 @@ public:
 	uint8 ActualColorNumber=0;
 
 	UPROPERTY(EditAnywhere)
+	bool IsBlocked=false;
+
+	UPROPERTY(EditAnywhere)
 	FLinearColor BlockedColor = FLinearColor::Black;
 	
 protected:

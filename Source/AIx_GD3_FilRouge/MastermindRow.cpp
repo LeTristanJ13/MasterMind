@@ -18,6 +18,15 @@ void AMastermindRow::BeginPlay()
 {
 	Super::BeginPlay();
 	Manager->OnSolutionChecked.AddDynamic(this, &AMastermindRow::ApplySolution);
+	SphereFeedback.Add(Sphere_0);
+	SphereFeedback.Add(Sphere_1);
+	SphereFeedback.Add(Sphere_2);
+	SphereFeedback.Add(Sphere_3);
+
+	if (Manager)
+	{
+		Manager->OnSolutionChecked.AddDynamic(this, &AMastermindRow::ApplySolution);
+	}
 }
 
 // Called every frame
@@ -36,9 +45,21 @@ void AMastermindRow::Clicked()
 		Answer[i] = PlayerSpheres[i]->GetComponentByClass<UMastermindSphere>()->GetSphereColor();
 	}
 	Manager->CheckAnswer(Answer);
+	
 }
 
 void AMastermindRow::ApplySolution(uint8 GoodPlaces, uint8 WrongPlaces)
 {
+	Manager->nombredetour++;
+	for (int i=0; i<GoodPlaces; i++)
+	{
+		SphereFeedback[i]->SetVisibility(true);
+		
+	}
+	for (int i=0; i<WrongPlaces; i++)
+	{
+		SphereFeedback[i]->SetVisibility(true);
+	}
+	
 }
 

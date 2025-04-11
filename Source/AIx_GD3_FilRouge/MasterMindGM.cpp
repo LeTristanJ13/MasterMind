@@ -3,6 +3,8 @@
 
 #include "MasterMindGM.h"
 
+#include "MastermindRow.h"
+
 // Sets default values
 AMasterMindGM::AMasterMindGM()
 {
@@ -48,6 +50,7 @@ void AMasterMindGM::CreateSolution()
 
 bool AMasterMindGM::CheckAnswer(TArray<uint8> Answer)
 {
+	nombredetour++;
 	bool result = true;
 	uint8 GoodPlaces = 0;
 	uint8 WrongPlaces = 0;
@@ -81,6 +84,19 @@ bool AMasterMindGM::CheckAnswer(TArray<uint8> Answer)
 					SolutionsAllowed[j] = false;
 					break;
 				}
+			}
+			
+		}
+		if (nombredetour == 9)
+		{
+			printf("la partie est terminé.");
+			if (result == true)
+			{
+				printf("Vous avez gagné");
+			}
+			else
+			{
+				printf("vous avez perdue");
 			}
 		}
 	}
